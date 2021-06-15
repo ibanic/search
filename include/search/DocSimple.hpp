@@ -9,7 +9,7 @@
 
 #include <string>
 #include <array>
-#include "Types.hpp"
+#include <search/Types.hpp>
 #include <cstring>
 
 namespace Search {

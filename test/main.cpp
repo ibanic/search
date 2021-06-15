@@ -4,11 +4,11 @@
 #include <vector>
 #include <future>
 
-#include "../FileStore.hpp"
-#include "../MemoryStore.hpp"
-#include "../Db.hpp"
-#include "../FindMany.hpp"
-#include "../Comparators.hpp"
+#include <search/FileStore.hpp>
+#include <search/MemoryStore.hpp>
+#include <search/Db.hpp>
+#include <search/FindMany.hpp>
+#include <search/Comparators.hpp>
 
 
 namespace fs = std::filesystem;

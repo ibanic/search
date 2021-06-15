@@ -15,13 +15,13 @@
 #include <optional>
 #include <string_view>
 #include <climits>
-#include "CompressSize.hpp"
+#include <search/CompressSize.hpp>
 #include <fstream>
 #include <atomic>
 #include <mutex>
 #include <shared_mutex>
 #include <tuple>
-#include "Types.hpp"
+#include <search/Types.hpp>
 #include <cstring>
 
 

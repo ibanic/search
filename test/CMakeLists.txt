@@ -16,8 +16,9 @@ add_executable(${PROJECT_NAME} ${Sources} ${SourcesC} ${HeadersC} ${Headers})
 
 
 
-#add_subdirectory("../Search" "search")
+#add_subdirectory("../" "search")
 target_link_libraries(${PROJECT_NAME} Search )
+INCLUDE_DIRECTORIES( ${SEARCH_INCLUDE_DIRS} )
 
 
 

@@ -11,9 +11,9 @@
 #include <map>
 #include <vector>
 #include <iostream>
-#include "SearchSettings.hpp"
+#include <search/SearchSettings.hpp>
 
-#include "Comparators.hpp"
+#include <search/Comparators.hpp>
 
 
 namespace Search {

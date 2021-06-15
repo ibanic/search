@@ -11,7 +11,7 @@
 #include <vector>
 #include <tsl/hopscotch_map.h>
 #include <filesystem>
-#include "KeyValueFile.hpp"
+#include <search/KeyValueFile.hpp>
 
 namespace Search {
 

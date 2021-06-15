@@ -11,7 +11,7 @@
 #include <map>
 #include <vector>
 #include <algorithm>
-#include "Tokenize.hpp"
+#include <search/Tokenize.hpp>
 
 namespace Search {
 

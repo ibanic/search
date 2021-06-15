@@ -12,13 +12,13 @@
 #include <map>
 #include <vector>
 #include <optional>
-#include "TokenInfo.hpp"
+#include <search/TokenInfo.hpp>
 #include <filesystem>
-#include "KeyValueFile.hpp"
-#include "KeyValueFileList.hpp"
-#include "KeyValueMemory.hpp"
-#include "CompressSize.hpp"
-#include "Types.hpp"
+#include <search/KeyValueFile.hpp>
+#include <search/KeyValueFileList.hpp>
+#include <search/KeyValueMemory.hpp>
+#include <search/CompressSize.hpp>
+#include <search/Types.hpp>
 #include <cstring>
 
 

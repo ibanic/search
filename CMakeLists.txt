@@ -4,10 +4,9 @@ set (CMAKE_CXX_STANDARD 17)
 project (Search)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-file(GLOB Sources "*.cpp")
-file(GLOB HeadersC "*.h")
-file(GLOB Headers "*.hpp")
-add_library(${PROJECT_NAME} STATIC ${Sources} ${HeadersC} ${Headers})
+file(GLOB Sources "src/*.cpp")
+file(GLOB Headers "include/*.hpp")
+add_library(${PROJECT_NAME} STATIC ${Sources} ${Headers})
 
 
 
@@ -57,6 +56,12 @@ TARGET_LINK_LIBRARIES( ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT} )
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 	TARGET_LINK_LIBRARIES( ${PROJECT_NAME} stdc++fs )
 endif()
+
+
+#### INCLUDE ####
+INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/include )
+SET(SEARCH_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include;${CMAKE_CURRENT_SOURCE_DIR}/tessil-hopscotch-map/include")
+SET(SEARCH_INCLUDE_DIRS ${SEARCH_INCLUDE_DIRS} PARENT_SCOPE)
 
 
 #### Test ####

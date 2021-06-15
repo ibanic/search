@@ -7,9 +7,9 @@
 
 #pragma once
 
-#include "Sort.hpp"
-#include "Tokenize.hpp"
-#include "SearchSettings.hpp"
+#include <search/Sort.hpp>
+#include <search/Tokenize.hpp>
+#include <search/SearchSettings.hpp>
 
 namespace Search {
 	/*template <class DbType, class TDoc>

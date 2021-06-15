@@ -1,4 +1,4 @@
-#include "CompressSize.hpp"
+#include <search/CompressSize.hpp>
 #include <stdexcept>
 #include <cstring>
 

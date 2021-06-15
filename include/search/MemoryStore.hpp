@@ -11,7 +11,7 @@
 #include <map>
 #include <vector>
 #include <optional>
-#include "TokenInfo.hpp"
+#include <search/TokenInfo.hpp>
 
 namespace Search {
 

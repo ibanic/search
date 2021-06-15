@@ -1,4 +1,4 @@
-#include "Tokenize.hpp"
+#include <search/Tokenize.hpp>
 //unistr.h or ustring.h
 #include <unicode/unistr.h>
 #include <unicode/translit.h>
@@ -6,8 +6,8 @@
 #include <stdexcept>
 #include <algorithm>
 
-#include "unicode/utf8.h"
-#include "unicode/uchar.h"
+#include <unicode/utf8.h>
+#include <unicode/uchar.h>
 #include <mutex>
 
 using namespace icu;

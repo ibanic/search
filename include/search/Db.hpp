@@ -12,14 +12,14 @@
 #include <vector>
 #include <set>
 #include <assert.h> 
-#include "Tokenize.hpp"
+#include <search/Tokenize.hpp>
 #include <thread>
 #include <fstream>
 #include <unordered_set>
 #include <chrono>
 #include <random>
-#include "Types.hpp"
-#include "FindMany.hpp"
+#include <search/Types.hpp>
+#include <search/FindMany.hpp>
 #include <mutex>
 
 

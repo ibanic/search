@@ -10,8 +10,8 @@
 #include <string>
 #include <map>
 #include <vector>
-#include "Tokenize.hpp"
-#include "SearchSettings.hpp"
+#include <search/Tokenize.hpp>
+#include <search/SearchSettings.hpp>
 
 
 namespace Search {
