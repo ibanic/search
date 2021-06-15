@@ -24,7 +24,7 @@
 
 
 #include <sstream>
-namespace tmp {
+namespace SearchTmp {
 class osyncstream : public std::stringstream {
 private:
 	std::ostream& stream_;
@@ -458,7 +458,7 @@ private:
 			
 			auto t2 = std::chrono::high_resolution_clock::now();
 			std::chrono::duration<double> d2 = t2 - t1;
-			{ tmp::osyncstream(std::cout) << "Counted " << numTokens << " tokens in " << d2.count() << " sec\n"; }
+			{ SearchTmp::osyncstream(std::cout) << "Counted " << numTokens << " tokens in " << d2.count() << " sec\n"; }
 
 			// lock with mutex
 			std::lock_guard<std::mutex> lock(mutex_);
@@ -511,7 +511,7 @@ private:
 			filesData.clear();
 			auto t3 = std::chrono::high_resolution_clock::now();
 			std::chrono::duration<double> d3 = t3 - t2;
-			{ tmp::osyncstream(std::cout) << "Insert docs finished in " << d3.count() << " sec\n"; }
+			{ SearchTmp::osyncstream(std::cout) << "Insert docs finished in " << d3.count() << " sec\n"; }
 
 
 			// - - - - - - - - - - - - - - 
@@ -554,7 +554,7 @@ private:
 			filesData.clear();
 			auto t4 = std::chrono::high_resolution_clock::now();
 			std::chrono::duration<double> d4 = t4 - t3;
-			{ tmp::osyncstream(std::cout) << "Insert tokens finished in " << d4.count() << " sec\n"; }
+			{ SearchTmp::osyncstream(std::cout) << "Insert tokens finished in " << d4.count() << " sec\n"; }
 			
 			
 			
@@ -577,7 +577,7 @@ private:
 			store_.optimizeFreeData();
 			auto t5 = std::chrono::high_resolution_clock::now();
 			std::chrono::duration<double> d5 = t5 - t4;
-			{ tmp::osyncstream(std::cout) << "OPTIMIZED in " << d5.count() << " sec\n"; }
+			{ SearchTmp::osyncstream(std::cout) << "OPTIMIZED in " << d5.count() << " sec\n"; }
 		}
 		
 	private:
