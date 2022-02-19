@@ -17,12 +17,14 @@
 
 namespace Search {
 
-template <class TRes, typename... Ts> struct SortCmp2 {
+template <class TRes, typename... Ts>
+struct SortCmp2 {
   std::tuple<Ts...> tup;
   SearchSettings<typename TRes::TDoc>* sett;
   SortCmp2(Ts&... args) : tup(args...) {}
 
-  template <size_t N> bool cmp(const TRes& d1, const TRes& d2) const {
+  template <size_t N>
+  bool cmp(const TRes& d1, const TRes& d2) const {
     if (sett && sett->manager && !sett->manager->shouldContinue()) {
       throw SearchCanceledException();
     }

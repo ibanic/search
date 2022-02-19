@@ -16,7 +16,8 @@
 
 namespace Search {
 
-template <class TDoc2> class MemoryStore {
+template <class TDoc2>
+class MemoryStore {
 public:
   typedef TokenInfo<typename TDoc2::TId> TTokenInfo;
   typedef TDoc2 TDoc;

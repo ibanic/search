@@ -16,7 +16,8 @@
 
 namespace Search {
 
-template <class TRes> class CompIsWhole {
+template <class TRes>
+class CompIsWhole {
 private:
   const std::vector<std::string>* tokens_;
   mutable std::vector<uint8_t> cache;
@@ -61,7 +62,8 @@ public:
   }
 };
 
-template <class TRes> class CompWordsTogether {
+template <class TRes>
+class CompWordsTogether {
 private:
   mutable std::vector<uint8_t> cache;
   std::string tokensSearch_;
@@ -124,7 +126,8 @@ public:
 
 // comparator that requires function for callback
 // callback should update array with text priorities
-template <class TRes> class CompPriorityTextsCallback {
+template <class TRes>
+class CompPriorityTextsCallback {
 private:
   const SearchSettings<typename TRes::TDoc>* sett_;
   mutable std::vector<uint8_t> cache_;

@@ -28,12 +28,14 @@ Range makeRange(uint32_t idx, const std::vector<std::string>& txt) {
   uint32_t start, end;
   if (idx >= 3) {
     start = idx - 3;
-  } else {
+  }
+  else {
     start = 0;
   }
   if (idx + 3 < txt.size()) {
     end = idx + 3;
-  } else {
+  }
+  else {
     end = txt.size() - 1;
   }
   return Range(start, end);
@@ -55,11 +57,14 @@ std::string excerptToString(const std::vector<ExcerptPart>& parts) {
   for (const auto& p : parts) {
     if (p.type == ExcPartType2::Regular) {
       txt += p.text;
-    } else if (p.type == ExcPartType2::Highlighted) {
+    }
+    else if (p.type == ExcPartType2::Highlighted) {
       txt += p.text;
-    } else if (p.type == ExcPartType2::Dots) {
+    }
+    else if (p.type == ExcPartType2::Dots) {
       txt += " ... ";
-    } else {
+    }
+    else {
       throw std::runtime_error("unknown excerpt part");
     }
   }

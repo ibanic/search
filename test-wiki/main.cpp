@@ -51,7 +51,8 @@ int main(int argc, char* argv[]) {
   return 1;
 }
 
-template <typename T> T readNum(BytesView& buff) {
+template <typename T>
+T readNum(BytesView& buff) {
   T n;
   std::memcpy((void*)&n, buff.data(), sizeof(T));
   buff.remove_prefix(sizeof(T));
@@ -66,7 +67,8 @@ std::string readString(BytesView& buff) {
   return txt;
 }
 
-template <typename T> void serializeNumber(Bytes& buff, T num) {
+template <typename T>
+void serializeNumber(Bytes& buff, T num) {
   auto s = buff.size();
   buff.resize(s + sizeof(T));
   std::memcpy(&buff[s], (void*)&num, sizeof(T));
@@ -166,10 +168,12 @@ void testReadFile(Db<FileStore<Doc>>::BulkWriter& writer, const char* start,
       doc.title_ = line;
       // remove new line
       doc.title_.resize(doc.title_.size() - 1);
-    } else if (i == 1) {
+    }
+    else if (i == 1) {
       std::string line2(line.data(), line.size() - 1);
       doc.id_ = std::stoull(line2);
-    } else {
+    }
+    else {
       doc.text_.append(line);
     }
     i++;
@@ -203,7 +207,8 @@ void test_index(const fs::path& input, const fs::path& output) {
     auto start2 = file.data() + i * perThread;
     if (i == 0) {
       starts[i] = start2;
-    } else {
+    }
+    else {
       starts[i] = testFindStart(start2, end);
       assert(starts[i] != nullptr);
     }
@@ -275,10 +280,12 @@ void test_index_single_thread(const fs::path& input, const fs::path& output) {
       doc.title_ = line;
       // remove new line
       doc.title_.resize(doc.title_.size() - 1);
-    } else if (i == 1) {
+    }
+    else if (i == 1) {
       std::string line2(line.data(), line.size() - 1);
       doc.id_ = std::stoull(line2);
-    } else {
+    }
+    else {
       doc.text_.append(line);
     }
     i++;

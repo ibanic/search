@@ -12,7 +12,8 @@
 #include <vector>
 
 namespace Search {
-template <class TDoc2> class Result {
+template <class TDoc2>
+class Result {
 public:
   typedef TDoc2 TDoc;
 
@@ -46,7 +47,8 @@ public:
   inline void reset() { continueSearch.test_and_set(); }
 };
 
-template <class TDoc> struct SearchSettings {
+template <class TDoc>
+struct SearchSettings {
 public:
   std::string query;
   std::vector<std::string> tokens;

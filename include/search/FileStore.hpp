@@ -25,7 +25,8 @@ namespace fs = std::filesystem;
 
 namespace Search {
 
-template <class TDoc2> class FileStore {
+template <class TDoc2>
+class FileStore {
 public:
   typedef TDoc2 TDoc;
   typedef TokenInfo<typename TDoc::TId> TTokenInfo;

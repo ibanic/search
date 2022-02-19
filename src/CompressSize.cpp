@@ -39,22 +39,26 @@ void writeSize(std::byte*& data, uint64_t size, uint8_t numBytes) {
     uint8_t num = static_cast<uint8_t>(size);
     std::memcpy(data, &num, sizeof(num));
     data += 1;
-  } else if ((size <= 0x3FFF && numBytes == 0) || numBytes == 2) {
+  }
+  else if ((size <= 0x3FFF && numBytes == 0) || numBytes == 2) {
     uint16_t num = swap_endian((uint16_t)size);
     num = num | 0x40;
     std::memcpy(data, &num, sizeof(num));
     data += 2;
-  } else if ((size <= 0x3FFFFFFF && numBytes == 0) || numBytes == 4) {
+  }
+  else if ((size <= 0x3FFFFFFF && numBytes == 0) || numBytes == 4) {
     uint32_t num = swap_endian((uint32_t)size);
     num = num | 0x80;
     std::memcpy(data, &num, sizeof(num));
     data += 4;
-  } else if ((size <= 0x3FFFFFFFFFFFFFFF && numBytes == 0) || numBytes == 8) {
+  }
+  else if ((size <= 0x3FFFFFFFFFFFFFFF && numBytes == 0) || numBytes == 8) {
     uint64_t num = swap_endian((uint64_t)size);
     num = num | 0xC0;
     std::memcpy(data, &num, sizeof(num));
     data += 8;
-  } else {
+  }
+  else {
     throw std::runtime_error("too big number");
   }
 }
@@ -72,13 +76,17 @@ Bytes writeSizeString(uint64_t size, uint8_t numBytes) {
 uint8_t numBytesSize(size_t size) {
   if (size <= 0x3F) {
     return 1;
-  } else if (size <= 0x3FFF) {
+  }
+  else if (size <= 0x3FFF) {
     return 2;
-  } else if (size <= 0x3FFFFFFF) {
+  }
+  else if (size <= 0x3FFFFFFF) {
     return 4;
-  } else if (size <= 0x3FFFFFFFFFFFFFFF) {
+  }
+  else if (size <= 0x3FFFFFFFFFFFFFFF) {
     return 8;
-  } else {
+  }
+  else {
     throw std::runtime_error("too big number");
   }
 }

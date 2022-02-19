@@ -41,11 +41,12 @@ public:
     stream_ << std::flush;
   }
 };
-}
+} // namespace SearchTmp
 
 namespace Search {
 
-template <class TStore2> class Db {
+template <class TStore2>
+class Db {
 public:
   typedef TStore2 TStore;
   struct Settings {

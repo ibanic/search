@@ -73,7 +73,8 @@ void clearToken(std::string& txt) {
   for (size_t i = 0; i < txt.size();) {
     if (charLenToRemove(&txt[i]) == 0) {
       lastToErase = std::string::npos;
-    } else {
+    }
+    else {
       if (lastToErase == std::string::npos) {
         lastToErase = i;
       }
@@ -121,7 +122,8 @@ std::vector<std::string> tokenize(const std::string& txt) {
         start = std::string::npos;
       }
       i += 1;
-    } else if (isWhitespace(&txt3[i])) {
+    }
+    else if (isWhitespace(&txt3[i])) {
       if (start != std::string::npos) {
         auto txt4 = txt3.substr(start, i - start);
         clearToken(txt4);
@@ -131,7 +133,8 @@ std::vector<std::string> tokenize(const std::string& txt) {
         start = std::string::npos;
       }
       i += charLen(txt3[i]);
-    } else {
+    }
+    else {
       if (start == std::string::npos) {
         start = i;
       }
@@ -167,7 +170,8 @@ std::vector<std::string> splitTokens(std::string_view txt) {
       arr.push_back(std::string(txt.data() + start, i - start));
       start = i + 1;
       i += 1;
-    } else {
+    }
+    else {
       i += charLen(txt[i]);
     }
   }

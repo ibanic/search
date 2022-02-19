@@ -18,7 +18,8 @@
 namespace Search {
 
 // https://stackoverflow.com/a/4956493
-template <typename T> T swap_endian(T u) {
+template <typename T>
+T swap_endian(T u) {
   static_assert(CHAR_BIT == 8, "CHAR_BIT != 8");
 
   union {

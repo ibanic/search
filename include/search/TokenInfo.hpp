@@ -11,7 +11,8 @@
 
 namespace Search {
 
-template <typename T> struct TokenInfo {
+template <typename T>
+struct TokenInfo {
   T docId;
   bool isWhole;
 };
