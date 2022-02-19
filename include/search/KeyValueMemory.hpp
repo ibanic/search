@@ -14,6 +14,8 @@
 #include <tsl/hopscotch_map.h>
 #include <vector>
 
+namespace fs = std::filesystem;
+
 namespace Search {
 
 class KeyValueMemory {

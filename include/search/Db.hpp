@@ -11,6 +11,7 @@
 #include <search/Tokenize.hpp>
 #include <search/Types.hpp>
 
+#include <boost/iostreams/device/mapped_file.hpp>
 #include <assert.h>
 #include <chrono>
 #include <fstream>
@@ -23,6 +24,8 @@
 #include <thread>
 #include <unordered_set>
 #include <vector>
+
+namespace fs = std::filesystem;
 
 namespace SearchTmp {
 class osyncstream : public std::stringstream {
@@ -651,4 +654,6 @@ private:
       }
     }
   };
-}
+};
+
+} // namespace Search

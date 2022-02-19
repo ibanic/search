@@ -71,11 +71,12 @@ set(SEARCH_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include;${CMAKE_CURRENT_SOU
 set(SEARCH_INCLUDE_DIRS ${SEARCH_INCLUDE_DIRS} PARENT_SCOPE)
 
 # Test
-if(SEARCH_BUILD_TEST)
-  add_subdirectory(test)
+add_subdirectory(test)
+if(SEARCH_BUILD_TEST_WIKI)
+  add_subdirectory(test-wiki)
   # default startup project for Visual Studio
   if(MSVC)
-    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT SearchTest)
-    set_property(TARGET testbed PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/SearchTest")
+    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT SearchTestWiki)
+    set_property(TARGET testbed PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/SearchTestWiki")
   endif()
 endif()
