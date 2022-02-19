@@ -10,24 +10,20 @@
 #include <string>
 
 namespace Search {
-	
-	template<typename T>
-	struct TokenInfo {
-		T docId;
-		bool isWhole;
-	};
 
+template <typename T> struct TokenInfo {
+  T docId;
+  bool isWhole;
+};
 
-	template<class T>
-	bool operator==( const TokenInfo<T>& a , const TokenInfo<T>& b )
-	{
-		return a.docId == b.docId && a.isWhole == b.isWhole;
-	}
-
-	template<class T>
-	bool operator!=( const TokenInfo<T>& a , const TokenInfo<T>& b )
-	{
-		return !(a == b);
-	}
-
+template <class T>
+bool operator==(const TokenInfo<T>& a, const TokenInfo<T>& b) {
+  return a.docId == b.docId && a.isWhole == b.isWhole;
 }
+
+template <class T>
+bool operator!=(const TokenInfo<T>& a, const TokenInfo<T>& b) {
+  return !(a == b);
+}
+
+} // namespace Search

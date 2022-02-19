@@ -7,13 +7,13 @@
 
 #pragma once
 
+#include <cstddef>
 #include <string>
 #include <string_view>
-#include <cstddef>
 
 namespace Search {
-	
-	typedef std::basic_string<std::byte> Bytes;
-	typedef std::basic_string_view<std::byte> BytesView;
 
-}
+typedef std::basic_string<std::byte> Bytes;
+typedef std::basic_string_view<std::byte> BytesView;
+
+} // namespace Search

@@ -7,46 +7,44 @@
 
 #pragma once
 
-#include <string>
-#include <vector>
-#include <tsl/hopscotch_map.h>
-#include <filesystem>
 #include <search/KeyValueFile.hpp>
+
+#include <filesystem>
+#include <string>
+#include <tsl/hopscotch_map.h>
+#include <vector>
 
 namespace Search {
 
+class KeyValueMemory {
+  tsl::hopscotch_map<std::string, Bytes> map_;
 
-	class KeyValueMemory {
-		tsl::hopscotch_map<std::string, Bytes> map_;
+public:
+  void set(const std::string& key, const Bytes& data) { map_[key] = data; }
 
-	public:
-		void set(const std::string& key, const Bytes& data) {
-			map_[key] = data;
-		}
+  void remove(const std::string& key) {
+    auto ptr = map_.find(key);
+    if (ptr != map_.end()) {
+      map_.erase(ptr);
+    }
+  }
 
-		void remove(const std::string& key) {
-			auto ptr = map_.find(key);
-			if( ptr != map_.end() ) {
-				map_.erase(ptr);
-			}
-		}
+  BytesView get(const std::string& key) {
+    auto ptr = map_.find(key);
+    if (ptr != map_.end()) {
+      return BytesView(ptr->second.data(), ptr->second.size());
+    }
+    return {};
+  }
 
-		BytesView get(const std::string& key) {
-			auto ptr = map_.find(key);
-			if( ptr != map_.end() ) {
-				return BytesView(ptr->second.data(), ptr->second.size());
-			}
-			return {};
-		}
+  void writeToFile(const fs::path& path) {
+    KeyValueFile fl(path);
+    fl.lockTableForNumItems(map_.size());
+    for (const auto& pair : map_) {
+      fl.set(pair.first, pair.second);
+    }
+    fl.unlockTable();
+  }
+};
 
-		void writeToFile(const fs::path& path) {
-			KeyValueFile fl(path);
-			fl.lockTableForNumItems(map_.size());
-			for( const auto& pair : map_ ) {
-				fl.set(pair.first, pair.second);
-			}
-			fl.unlockTable();
-		}
-	};
-
-}
+} // namespace Search

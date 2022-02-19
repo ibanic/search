@@ -1,76 +1,81 @@
-cmake_minimum_required (VERSION 3.1)
-set (CMAKE_CXX_STANDARD 17)
+cmake_minimum_required(VERSION 3.1)
+set(CMAKE_CXX_STANDARD 17)
 
-project (Search)
+project(Search)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-file(GLOB Sources "src/*.cpp")
-file(GLOB Headers "include/*.hpp")
+# sources
+set(Sources
+  ./src/CompressSize.cpp
+  ./src/KeyValueFile.cpp
+  ./src/KeyValueFileList.cpp
+  ./src/LoadExcerpt.cpp
+  ./src/Tokenize.cpp
+)
+
+# Headers
+set(Headers
+  ./include/search/Comparators.hpp
+  ./include/search/CompressSize.hpp
+  ./include/search/Db.hpp
+  ./include/search/DocSimple.hpp
+  ./include/search/FileStore.hpp
+  ./include/search/FindMany.hpp
+  ./include/search/KeyValueFile.hpp
+  ./include/search/KeyValueFileList.hpp
+  ./include/search/KeyValueMemory.hpp
+  ./include/search/LoadExcerpt.hpp
+  ./include/search/MemoryStore.hpp
+  ./include/search/SearchSettings.hpp
+  ./include/search/Sort.hpp
+  ./include/search/TokenInfo.hpp
+  ./include/search/Tokenize.hpp
+  ./include/search/Types.hpp
+)
+
+# Library
 add_library(${PROJECT_NAME} STATIC ${Sources} ${Headers})
-
-
-
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
-option(SEARCH_BUILD_TEST "Build the Search test program" ON)
 
+# Threads
+find_package(Threads)
+target_link_libraries(${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
-
-#### Boost ####
-FIND_PACKAGE( Boost 1.60 COMPONENTS system iostreams REQUIRED )
-INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
-TARGET_LINK_LIBRARIES( ${PROJECT_NAME} ${Boost_LIBRARIES} )
-
-
-#### hopscotch map ####
-INCLUDE_DIRECTORIES("${CMAKE_CURRENT_SOURCE_DIR}/tessil-hopscotch-map/include")
-
-
-
-# ICU
-#
-# command line add -DCMAKE_PREFIX_PATH=/usr/local/opt/icu4c
-# GUI add entry:    CMAKE_PREFIX_PATH     /usr/local/opt/icu4c
-#
-# Components Reference:
-# https://cmake.org/cmake/help/latest/module/FindICU.html
-# ICU components = data, i18n, io, le, lx, test, tu and uc.
-find_package(ICU 60.0 COMPONENTS uc i18n REQUIRED)
-# Link using the imported target names (ICU::uc, ICU::i18n, etc.)
-target_link_libraries(${PROJECT_NAME} ICU::uc ICU::i18n)
-
-
-
-#### CityHash ####
-FIND_PACKAGE( CityHash REQUIRED )
-INCLUDE_DIRECTORIES( ${CITYHASH_INCLUDE_DIRS} )
-TARGET_LINK_LIBRARIES( ${PROJECT_NAME} ${CITYHASH_LIBRARIES} )
-
-
-
-#### Threads ####
-FIND_PACKAGE(Threads)
-TARGET_LINK_LIBRARIES( ${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT} )
-
-
-#### Filesystem ####
-if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-	TARGET_LINK_LIBRARIES( ${PROJECT_NAME} stdc++fs )
+# Filesystem
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+  target_link_libraries(${PROJECT_NAME} stdc++fs)
 endif()
 
+# Boost
+find_package(Boost 1.60 COMPONENTS system iostreams REQUIRED)
+include_directories(${Boost_INCLUDE_DIR})
+target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
 
-#### INCLUDE ####
-INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/include )
-SET(SEARCH_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include;${CMAKE_CURRENT_SOURCE_DIR}/tessil-hopscotch-map/include")
-SET(SEARCH_INCLUDE_DIRS ${SEARCH_INCLUDE_DIRS} PARENT_SCOPE)
+# hopscotch map
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/tessil-hopscotch-map/include")
 
+# ICU
+# command line add -DCMAKE_PREFIX_PATH=/usr/local/opt/icu4c
+# GUI add entry:    CMAKE_PREFIX_PATH     /usr/local/opt/icu4c
+find_package(ICU 60.0 COMPONENTS uc i18n REQUIRED)
+target_link_libraries(${PROJECT_NAME} ICU::uc ICU::i18n)
 
-#### Test ####
-if (SEARCH_BUILD_TEST)
-	add_subdirectory(test)
+# CityHash
+find_package(CityHash REQUIRED)
+include_directories(${CITYHASH_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} ${CITYHASH_LIBRARIES})
 
-	# default startup project for Visual Studio
-	if (MSVC)
-		set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT SearchTest)
-		set_property(TARGET testbed PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/SearchTest")
-	endif()
+# Include
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+set(SEARCH_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include;${CMAKE_CURRENT_SOURCE_DIR}/tessil-hopscotch-map/include")
+set(SEARCH_INCLUDE_DIRS ${SEARCH_INCLUDE_DIRS} PARENT_SCOPE)
+
+# Test
+if(SEARCH_BUILD_TEST)
+  add_subdirectory(test)
+  # default startup project for Visual Studio
+  if(MSVC)
+    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT SearchTest)
+    set_property(TARGET testbed PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/SearchTest")
+  endif()
 endif()
