@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.20)
 set(CMAKE_CXX_STANDARD 17)
 
 project(SearchTest)
@@ -18,5 +18,5 @@ add_executable(${PROJECT_NAME}
 )
 
 find_package(GTest REQUIRED)
-target_link_libraries(${PROJECT_NAME} Search GTest::gtest GTest::gmock GTest::gtest_main)
+target_link_libraries(${PROJECT_NAME} Search GTest::gtest GTest::gtest_main)
 gtest_discover_tests(${PROJECT_NAME})
