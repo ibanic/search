@@ -19,3 +19,4 @@ add_executable(${PROJECT_NAME}
 
 find_package(GTest REQUIRED)
 target_link_libraries(${PROJECT_NAME} Search GTest::gtest GTest::gmock GTest::gtest_main)
+gtest_discover_tests(${PROJECT_NAME})

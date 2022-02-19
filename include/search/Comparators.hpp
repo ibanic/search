@@ -10,6 +10,9 @@
 #include <search/SearchSettings.hpp>
 #include <search/Tokenize.hpp>
 
+#include <atomic>
+#include <functional>
+#include <limits>
 #include <map>
 #include <string>
 #include <vector>

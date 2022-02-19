@@ -12,8 +12,10 @@
 #include <search/Types.hpp>
 
 #include <boost/iostreams/device/mapped_file.hpp>
+#include <algorithm>
 #include <assert.h>
 #include <chrono>
+#include <filesystem>
 #include <fstream>
 #include <map>
 #include <mutex>

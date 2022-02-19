@@ -7,7 +7,9 @@
 
 #pragma once
 
+#include <atomic>
 #include <exception>
+#include <functional>
 #include <string>
 #include <vector>
 

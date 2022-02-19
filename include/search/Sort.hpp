@@ -10,6 +10,7 @@
 #include <search/Comparators.hpp>
 #include <search/SearchSettings.hpp>
 
+#include <algorithm>
 #include <iostream>
 #include <map>
 #include <string>

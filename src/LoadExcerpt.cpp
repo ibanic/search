@@ -1,4 +1,5 @@
 #include <search/LoadExcerpt.hpp>
+#include <stdexcept>
 
 namespace Search {
 Range mergeRange(const Range& r1, const Range& r2) {

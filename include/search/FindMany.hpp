@@ -11,6 +11,8 @@
 #include <search/Sort.hpp>
 #include <search/Tokenize.hpp>
 
+#include <algorithm>
+
 namespace Search {
 
 template <class DbType, class... Ts>
